@@ -35,7 +35,7 @@ resource "google_compute_instance" "vm_with_container" {
           - name: app
             image: us-east1-docker.pkg.dev/lively-transit-459722-s3/test-repo/myapp:lts
             ports:
-                - containerPort: 8080
+                - containerPort: 80
             stdin: false
             tty: false
         restartPolicy: Always
@@ -47,5 +47,5 @@ resource "google_compute_instance" "vm_with_container" {
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
-  tags = ["container", "tcp-8080"]
+  tags = ["container"]
 }
