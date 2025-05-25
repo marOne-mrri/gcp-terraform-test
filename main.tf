@@ -3,6 +3,14 @@ provider "google" {
   region  = "us-east5"
 }
 
+terraform {
+  backend "gcs" {
+    bucket  = "the-test-gcs"
+    prefix  = "dev" # folder-like path in the bucket
+  }
+}
+
+
 resource "google_compute_instance" "vm_with_container" {
   name         = "container-vm"
   machine_type = "e2-micro"
